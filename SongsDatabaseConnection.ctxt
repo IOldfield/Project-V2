@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=dbFile
+comment0.target=SongsDatabaseConnection(java.lang.String)
+comment1.params=query
+comment1.target=java.sql.PreparedStatement\ newStatement(java.lang.String)
+comment2.params=statement
+comment2.target=java.sql.ResultSet\ runQuery(java.sql.PreparedStatement)
+comment3.params=statement
+comment3.target=void\ executeUpdate(java.sql.PreparedStatement)
+comment4.params=
+comment4.target=void\ disconnect()
+numComments=5

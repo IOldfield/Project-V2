@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SceneController()
+comment1.params=
+comment1.target=void\ initialize()
+comment2.params=stage
+comment2.target=void\ prepareStageEvents(javafx.stage.Stage)
+comment3.params=we
+comment3.target=void\ handle(javafx.stage.WindowEvent)
+comment4.params=
+comment4.target=void\ addClicked()
+comment5.params=
+comment5.target=void\ refineClicked()
+comment6.params=
+comment6.target=void\ sortClicked()
+comment7.params=
+comment7.target=void\ searchClicked()
+comment8.params=
+comment8.target=void\ tableViewClicked()
+numComments=9
