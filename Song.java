@@ -8,10 +8,10 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Song
 {
-    public IntegerProperty SongID;
-    private IntegerProperty ArtistID;
-    private IntegerProperty ReleaseID;
-    private StringProperty SongName;        
+    public StringProperty SongName;
+    private StringProperty ArtistName;
+    private StringProperty ReleaseName;
+    private StringProperty Genre;        
     private StringProperty SongLength;
    
     public String getSongName() { return SongName.get(); }
@@ -20,34 +20,34 @@ public class Song
     public String getSongLength() { return SongLength.get(); }
     public void setSongLength(String SongLength) { this.SongLength = new SimpleStringProperty(SongLength); }
 
-    public int getSongID() { return SongID.get(); }
-    public void setSongID(int SongID) { this.SongID = new SimpleIntegerProperty(SongID); }
+    public String getGenre() { return Genre.get(); }
+    public void setGenre(String Genre) { this.Genre = new SimpleStringProperty(Genre); }
  
-    public int getArtistID() { return ArtistID.get(); }
-    public void setArtistID(int ArtistID) { this.ArtistID = new SimpleIntegerProperty(ArtistID); }
+    public String getArtistName() { return ArtistName.get(); }
+    public void setArtistName(String ArtistName) { this.ArtistName = new SimpleStringProperty(ArtistName); }
     
-    public int getReleaseID() { return ReleaseID.get(); }
-    public void setReleaseID(int ReleaseID) { this.ReleaseID = new SimpleIntegerProperty(ReleaseID); }
+    public String getReleaseName() { return ReleaseName.get(); }
+    public void setReleaseName(String ReleaseName) { this.ReleaseName = new SimpleStringProperty(ReleaseName); }
     
-    public Song(int SongID, int ArtistID, int ReleaseID, String SongName, String SongLength)
+    public Song(String SongName, String Genre, String ArtistName, String ReleaseName, String SongLength)
     {
-        setSongID(SongID);  
-        setArtistID(ArtistID);
-        setReleaseID(ReleaseID);
         setSongName(SongName);
+        setGenre(Genre);  
+        setArtistName(ArtistName);
+        setReleaseName(ReleaseName);
         setSongLength(SongLength);
     }
     
     @Override public String toString()
     {
-        return (SongName + " " + SongLength + " "  +SongID + " "  + ArtistID + " "  + ReleaseID );
+        return (SongName + " " + Genre + " " + ArtistName + " " + ReleaseName + " " + SongLength );
     }
 
     public static void readAll(List<Song> list)
     {
         list.clear();      
         
-        PreparedStatement statement = Application.SongsDatabase.newStatement("SELECT SongID, ArtistID, ReleaseID, SongName, SongLength FROM Songs"); 
+        PreparedStatement statement = Application.SongsDatabase.newStatement("select songs.songname, songs.SongLength, artists.ArtistName, releases.ReleaseName, releases.Genre from songs inner join artists on songs.ArtistID = artists.ArtistID inner join releases on songs.ReleaseID = releases.ReleaseID "); 
 
         if (statement != null)      
         {
@@ -57,10 +57,10 @@ public class Song
             {
                 try {                              
                     while (results.next()) {                                               
-                        list.add( new Song(results.getInt("SongID"), 
-                                results.getInt("ArtistID"), 
-                                results.getInt("ReleaseID"),
-                                results.getString("SongName"),
+                        list.add( new Song(results.getString("SongName"), 
+                                results.getString("Genre"), 
+                                results.getString("ArtistName"),
+                                results.getString("ReleaseName"),
                                 results.getString("SongLength")) );
                     }
                 }
@@ -72,5 +72,4 @@ public class Song
         }
 
     }
-
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
+<BorderPane minHeight="864.0" minWidth="1633.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
    <left>
       <VBox alignment="CENTER" style="-fx-background-color: #1c1c1c;" BorderPane.alignment="CENTER">
          <children>
