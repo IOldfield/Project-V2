@@ -72,4 +72,14 @@ public class Song
         }
 
     }
+    
+    public static void deleteByName(String name){
+        try{
+            PreparedStatement stat = Application.SongsDatabase.newStatement("DELETE FROM songs WHERE songname=?");
+            stat.setString(1, name);
+            Application.SongsDatabase.executeUpdate(stat);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

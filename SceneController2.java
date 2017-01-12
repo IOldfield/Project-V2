@@ -17,9 +17,12 @@ public class SceneController2
 {    
 
     private Stage stage;     
+    private SceneController parentScene;
 
     @FXML   private Button deleteButton;
     @FXML   private ListView<String> list;
+    
+    public String tempName;
 
     public SceneController2()         
     {
@@ -27,6 +30,10 @@ public class SceneController2
 
     } 
 
+    public void setTempName(String n){
+        tempName = n;
+    }
+    
     public void initialize ()          
     {            
         System.out.println("Asserting controls...");
@@ -44,12 +51,14 @@ public class SceneController2
 
     }
 
-    public void prepareStageEvents(Stage stage, String songTitle)
+    public void prepareStageEvents(Stage stage, SceneController parent, String songTitle)
     {
+       
         System.out.println("Preparing stage events...");
 
         this.stage = stage;
-
+        this.parentScene = parent;
+        
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() 
             {
                 public void handle(WindowEvent we) {
@@ -65,18 +74,14 @@ public class SceneController2
         for (String info : songDetails.split("\n")) list.getItems().add(info);
     }    
 
-    @FXML   void deleteClicked()
+    @FXML   void deleteClicked() throws SQLException
     {
-       /* System.out.println("Delete was clicked");
-
-        String sql = "delete from Songs where SongName=?";
-
-        PreparedStatement statement = Application.SongsDatabase.newStatement(sql);
-        statement.setString(1,);
-        int rowsDeleted = statement.executeUpdate();
-        if (rowsDeleted > 0) {
-            System.out.println("A song was deleted successfully!");*/
-        }
+       
+       Song.deleteByName(tempName);
+       parentScene.refresh();
+       stage.close();
+       
+    }
     
 
     @FXML   void listViewClicked()

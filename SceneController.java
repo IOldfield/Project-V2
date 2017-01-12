@@ -39,7 +39,7 @@ public class SceneController
         }        
 
     } 
-
+    
     public void initialize () throws SQLException        
     {            
         System.out.println("Asserting controls...");
@@ -93,8 +93,9 @@ public class SceneController
         centralDB.getColumns().add(SongLengthColumn); 
 
         centralDB.setItems(songList);
+        
     }
-
+   
     public void prepareStageEvents(Stage stage)
     {
         System.out.println("Preparing stage events...");
@@ -110,6 +111,10 @@ public class SceneController
             });
     }       
 
+    @FXML   void refresh() throws SQLException{
+        initialize();
+    }
+    
     @FXML   void addClicked()
     {
         System.out.println("Add was clicked!");        
@@ -152,9 +157,11 @@ public class SceneController
                 stage.setTitle(selectedItem.getSongName());
                 stage.setScene(new Scene(loader.load()));
                 stage.show();
-
+                
                 SceneController2 controller2 = loader.getController();
-                controller2.prepareStageEvents(stage, selectedItem.getSongName());
+                controller2.prepareStageEvents(stage, this, selectedItem.getSongName());
+                
+                controller2.setTempName(selectedItem.getSongName());
 
             }
             catch(Exception E)

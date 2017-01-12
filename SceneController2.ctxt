@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.params=
 comment0.target=SceneController2()
-comment1.params=
-comment1.target=void\ initialize()
-comment2.params=stage\ songTitle
-comment2.target=void\ prepareStageEvents(javafx.stage.Stage,\ java.lang.String)
-comment3.params=we
-comment3.target=void\ handle(javafx.stage.WindowEvent)
-comment4.params=
-comment4.target=void\ deleteClicked()
+comment1.params=n
+comment1.target=void\ setTempName(java.lang.String)
+comment2.params=
+comment2.target=void\ initialize()
+comment3.params=stage\ parent\ songTitle
+comment3.target=void\ prepareStageEvents(javafx.stage.Stage,\ SceneController,\ java.lang.String)
+comment4.params=we
+comment4.target=void\ handle(javafx.stage.WindowEvent)
 comment5.params=
-comment5.target=void\ listViewClicked()
-numComments=6
+comment5.target=void\ deleteClicked()
+comment6.params=
+comment6.target=void\ listViewClicked()
+numComments=7
